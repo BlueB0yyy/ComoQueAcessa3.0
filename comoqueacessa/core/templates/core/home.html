@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Como que acessa?</title>
+</head>
+<body>
+    <h1>Como que acessa?</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    {% if response %}
+        <h2>Passo a passo:</h2>
+        <div>{{ response|safe }}</div>
+    {% endif %}
+</body>
+</html>
