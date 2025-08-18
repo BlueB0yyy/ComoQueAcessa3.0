@@ -1,0 +1,31 @@
+{% extends 'master.html' %}
+
+{% block content %}
+    <div class="search-box">
+        <form method="get" action="{% url 'search' %}">
+            <input type="text" name="q" placeholder="Sobre o que você quer saber? (tente usar palavras-chave)">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    {% if results %}
+        <div class="results">
+            <h2>Resposta para sua pesquisa:</h2>
+            {% for item in results %}
+                <div class="card">
+                    <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h2>Sugestões com base em dúvidas anteriores...</h2>
+    <div class="suggestions">
+        {% for suggestion in suggestions %}
+            <div class="card">
+                <span>{{ suggestion.title }}</span>
+                <span class="star">★</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

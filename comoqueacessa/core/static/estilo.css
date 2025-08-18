@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2a47ff;
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar .menu {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.auth-buttons a {
+    background: white;
+    color: #2a47ff;
+    padding: 5px 10px;
+    margin-left: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.search-box {
+    background: #b0b0b0;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.search-box input {
+    width: 70%;
+    padding: 8px;
+}
+
+.search-box button {
+    padding: 8px 15px;
+    background: #2a47ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.results, .suggestions {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: #a0a0a0;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.card .star {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 18px;
+    color: gold;
+}

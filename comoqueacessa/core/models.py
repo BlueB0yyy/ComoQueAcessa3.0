@@ -8,7 +8,6 @@ class Hist_busca(models.Model):
     data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.query[:50]
+        return self.busca[:50]
 
 
-# Create your models here.

@@ -1,15 +1,15 @@
-# core/utils.py
+# core/utility.py
 from ddgs import DDGS
 import ollama
 
-def search_duckduckgo(query, num_results=12):
+def search_duckduckgo(query, num_results=6):
     """
     Faz uma busca no DuckDuckGo e retorna uma lista com até 'num_results' resultados.
     Cada item contém 'title' e 'link'.
     """
     results = [] #lista de resultados
     with DDGS() as ddgs: 
-        for r in ddgs.text(query, max_results=num_results): #Para cada elemento da pesquisa da query
+        for r in ddgs.text(query, region='pt-br', max_results=num_results): #Para cada elemento da pesquisa da query
             results.append({ #cria uma lista gigante com 12 títulos e links
                 "title": r.get("title"),
                 "link": r.get("href")
@@ -30,7 +30,11 @@ def resposta_da_ia(query, results):
     Aqui estão algumas informações encontradas na web:
     {text}
 
-    Gere um passo a passo claro, simples e numerado de como acessar essa informação.
+    Gere um passo a passo claro, simples e numerado de como acessar essa informação. 
+    Busque nos sites também se forem os sites onde o usuário poderá encontrar a informação, e aponte o passo a passo.
+    As listagens devem ser separadas por links, exceto quando forem relacionadas. Quaisuqer subtópicos devem ser subitens da lista.
+    Evite dar instruções sobre conexão com navegador, pois o usuário já tem esse acesso.
+    No passo a passo, inclua links para os sites que os usuários devem acessar, não direcionando eles para outros sistemas de busca.
     No final, inclua links úteis.
     """
 
