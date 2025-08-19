@@ -1,0 +1,13 @@
+{% if response %}
+    <h3>Resposta:</h3>
+    <p>{{ response }}</p>
+{% endif %}
+
+{% if results %}
+    <h4>Resultados da busca:</h4>
+    <ul>
+    {% for r in results %}
+        <li><a href="{{ r.url }}">{{ r.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

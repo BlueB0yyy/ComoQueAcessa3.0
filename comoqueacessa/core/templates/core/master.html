@@ -20,29 +20,21 @@
 
     <!-- Barra de busca visível sempre -->
     <main class="content">
-        <form method="post" action="{% url 'home' %}" class="search-bar">
+        <form method="post" 
+            hx-post="{% url 'home' %}" 
+            hx-target="#resultados" 
+            hx-swap="innerHTML">
             {% csrf_token %}
-            {{ form.query }}
+            {{ form }}
             <button type="submit">Buscar</button>
         </form>
-        {% if response %}
-            <div class="resposta">
-                <h3>Resposta:</h3>
-                <p>{{ response }}</p>
-            </div>
-        {% endif %}
 
-        {% if results %}
-        <div class="resultados">
-            <h3>Resultados encontrados:</h3>
-            <ul>
-                {% for r in results %}
-                <li>{{ r }}</li>
-                {% endfor %}
-            </ul>
+        <div id="resultados">
+            {% include "core/resultados.html" %}
         </div>
-        {% endif %}
     </main>
+
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
 
 </body>
 </html>

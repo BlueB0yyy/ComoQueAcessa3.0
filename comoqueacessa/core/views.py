@@ -14,12 +14,26 @@ def home(request):
             response = resposta_da_ia(query, results) #Resposta da IA
             print("Usuário autenticado?", request.user.is_authenticated)
             print("Usuário:", request.user)
-            if request.user.is_authenticated: #Se o usuário estiver logado
-                 Hist_busca.objects.create(user=request.user, busca=query, resposta=response) #Cria um novo objeto no histórico
+            if request.user.is_authenticated:
+                Hist_busca.objects.create(
+                    user=request.user,
+                    busca=query,
+                    resposta=response
+                )
+            # Se foi um POST via HTMX, renderiza só os resultados
+            if request.headers.get("HX-Request"):
+                return render(request, "core/resultados.html", {
+                "response": response,
+                "results": results
+                })
     else:
         form = Form_de_busca()
 
-    return render(request, "core/master.html", {"user":request.user,"form": form, "response": response, "results": results})
+    return render(request, "core/master.html", {
+        "form": form,
+        "response": response,
+        "results": results
+    })
 
 def guest(request):
     return render(request, "core/guest.html")  # pode criar um guest.html simples
