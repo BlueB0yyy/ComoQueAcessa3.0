@@ -72,3 +72,24 @@ body {
     font-size: 18px;
     color: gold;
 }
+
+label{
+    margin-left: 20px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+input{
+    display: inline-block;
+}
+
+button{
+    margin-left: 20px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+#resultados{
+    margin-left:20px;
+    margin-right:20px;
+}

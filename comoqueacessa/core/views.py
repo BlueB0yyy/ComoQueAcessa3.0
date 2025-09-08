@@ -1,4 +1,6 @@
 # core/views.py
+import markdown
+from django.utils.safestring import mark_safe
 from django.shortcuts import render
 from .forms import Form_de_busca
 from .utility import search_duckduckgo, resposta_da_ia
@@ -6,13 +8,22 @@ from .models import Hist_busca
 
 def home(request):
     response, results = None, None
-    if request.method == "POST": #Se estiver postando
-        form = Form_de_busca(request.POST) #Gera um form de busca
-        if form.is_valid(): #teste de validação do form
-            query = f'Como acessar'+form.cleaned_data["query"]+'?' #Query de busca do DuckDuckGo
-            results = search_duckduckgo(query) #Retorno dos resultados
-            response = resposta_da_ia(query, results) #Resposta da IA
-            print("Usuário autenticado?", request.user.is_authenticated)
+
+    if request.method == "POST":                    #Se estiver postando
+        form = Form_de_busca(request.POST)          #Gera um form de busca
+
+        if form.is_valid():                         #teste de validação do form
+            print('Processando')
+            query = f'Como acessar "{form.cleaned_data["query"]}"?'      #Query de busca do DuckDuckGo
+            print(query)
+            results = search_duckduckgo(query)                          #Retorno dos resultados
+            print('Busca feita!')
+
+            raw_response = resposta_da_ia(query, results)               #Resposta da IA
+            print('Resposta da IA processada!')
+            response = mark_safe(markdown.markdown(raw_response))       #Formatar pra aparecer certo na página
+
+            print("Usuário autenticado?", request.user.is_authenticated)    #Só pra verificar se está logado
             print("Usuário:", request.user)
             if request.user.is_authenticated:
                 Hist_busca.objects.create(
@@ -37,9 +48,3 @@ def home(request):
 
 def guest(request):
     return render(request, "core/guest.html")  # pode criar um guest.html simples
-
-
-
-
-
-

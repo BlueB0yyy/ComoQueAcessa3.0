@@ -31,13 +31,16 @@ def resposta_da_ia(query, results):
     {text}
 
     Gere um passo a passo claro, simples e numerado de como acessar essa informação. 
-    Busque nos sites também se forem os sites onde o usuário poderá encontrar a informação, e aponte o passo a passo.
+    Busque nos sites também se forem os sites onde o usuário poderá encontrar a informação, e exiba o passo a passo dos sites.
+    Quero que visite os sites passados e retorne as opções detalhadas nos sites sobre como acessar a informação.
     As listagens devem ser separadas por links, exceto quando forem relacionadas. Quaisuqer subtópicos devem ser subitens da lista.
     Evite dar instruções sobre conexão com navegador, pois o usuário já tem esse acesso.
-    No passo a passo, inclua links para os sites que os usuários devem acessar, não direcionando eles para outros sistemas de busca.
+    No passo a passo, inclua links clicáveis para os sites que os usuários devem acessar, não direcionando eles para outros sistemas de busca.
+    Divida respostas diferentes em listagens diferentes (se for explicar um certo passo a passo, ao passar para um novo, comece do 1 novamente)
     No final, inclua links úteis.
     """
 
+    print(prompt)
     response = ollama.chat(
         model="wizardlm2:latest",  # ou outro modelo que você tenha baixado
         messages=[

@@ -22,10 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-=z15*s1c5b%s!ipvm%e-j+5dc$@+)9mi^w2-s^r$dpf_^gp2sx'
 
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 ALLOWED_HOSTS = []
+
+
 
 
 # Application definition
@@ -39,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
 
-    "django.contrib.sites",
+    #Google auth (para login da conta Google)
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -48,13 +54,26 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-AUTHENTICATION_BACKENDS = [
+#Métodos de autenticação
+AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
-]
+)
 
 LOGIN_REDIRECT_URL = "/"   # para onde mandar o usuário depois do login
 LOGOUT_REDIRECT_URL = "/"  # para onde mandar depois do logout
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+SOCIALACCOUNT_AUTO_SIGNUP = True
+AUTH_USER_MODEL = "core.CustomUser"
+
+ACCOUNT_ADAPTER = "core.adapters.MyAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "core.adapters.MySocialAccountAdapter"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,7 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 

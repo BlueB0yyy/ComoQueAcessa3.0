@@ -1,0 +1,22 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionando...</title>
+  <link rel="stylesheet" href="{% static 'estilo.css' %}">
+  <script>
+    window.onload = function() {
+      document.getElementById("auto-login-form").submit();
+    }
+  </script>
+</head>
+<body>
+  <form id="auto-login-form" method="post" action="">
+    {% csrf_token %}
+    <button type="submit" style="display:none;">Continuar</button>
+  </form>
+  <p>Redirecionando para o Google...</p>
+</body>
+</html>

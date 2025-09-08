@@ -1,6 +1,8 @@
 {% if response %}
     <h3>Resposta:</h3>
-    <p>{{ response }}</p>
+    <div class="resposta-markdown">
+        {{response|safe}}
+    </div>
 {% endif %}
 
 {% if results %}
