@@ -9,5 +9,6 @@ def google_login_redirect(request):
 urlpatterns = [
     path("", views.home, name="home"),
     path("login/", google_login_redirect, name="login"),
+    path("historico/", views.historico_pesquisas, name="historico_pesquisas"),
     path("accounts/", include("allauth.urls"))
 ]

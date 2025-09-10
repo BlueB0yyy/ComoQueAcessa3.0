@@ -93,3 +93,53 @@ button{
     margin-left:20px;
     margin-right:20px;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Botão principal */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Menu escondido */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    z-index: 1;
+}
+
+/* Links do menu */
+.dropdown-content a {
+    color: black;
+    padding: 10px 14px;
+    text-decoration: none;
+    display: block;
+    border-radius: 6px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mostrar no hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Efeito no botão quando aberto */
+.dropdown:hover .dropbtn {
+    background-color: #45a049;
+}

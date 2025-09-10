@@ -1,4 +1,5 @@
 # core/views.py
+from django.contrib.auth.decorators import login_required
 import markdown
 from django.utils.safestring import mark_safe
 from django.shortcuts import render
@@ -40,7 +41,7 @@ def home(request):
     else:
         form = Form_de_busca()
 
-    return render(request, "core/master.html", {
+    return render(request, "core/main.html", {
         "form": form,
         "response": response,
         "results": results
@@ -48,3 +49,8 @@ def home(request):
 
 def guest(request):
     return render(request, "core/guest.html")  # pode criar um guest.html simples
+
+@login_required
+def historico_pesquisas(request):
+    pesquisas = Hist_busca.objects.filter(user=request.user).order_by("-data")
+    return render(request, "core/historico.html", {"pesquisas": pesquisas})

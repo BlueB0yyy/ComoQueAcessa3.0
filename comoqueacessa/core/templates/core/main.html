@@ -1,0 +1,26 @@
+{% extends 'core/master.html' %}
+
+{% block content %}
+    <main class="content">
+        <form method="post" 
+            action = "{% url 'home' %}" 
+            hx-post="{% url 'home' %}" 
+            hx-target="#resultados" 
+            hx-swap="innerHTML"
+            hx-on::after-request="this.reset()">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Buscar</button>
+        </form>
+
+        <div id="loader" style="display:none; margin-top:10px; font-style:italic;">
+            ⏳ Processando sua busca...
+        </div>
+
+        <div id="resultados">
+            {% include "core/resultados.html" %}
+        </div>
+    </main>
+
+
+{% endblock %}

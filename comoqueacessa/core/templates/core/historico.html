@@ -1,0 +1,15 @@
+{% extends "core/master.html" %}
+{% block content %}
+<h2>Suas Pesquisas</h2>
+<ul style="list-style: none; padding: 0;">
+    {% for item in pesquisas %}
+        <li style="margin-bottom: 12px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <strong>{{ item.busca }}</strong><br>
+            <em>Resposta:</em> {{ item.resposta|truncatechars:100 }}<br>
+            <small>Feito em {{ item.data|date:"d/m/Y H:i" }}</small>
+        </li>
+    {% empty %}
+        <li>Você ainda não fez nenhuma pesquisa.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
