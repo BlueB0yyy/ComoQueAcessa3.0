@@ -5,7 +5,7 @@
     {% for item in pesquisas %}
         <li style="margin-bottom: 12px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
             {{ item.data|date:"d/m/Y H:i" }} –
-            <a href="{{ hist.link }}" target="_blank">
+            <a href="{{ hist.link }}" target="blank">
                 {{ item.busca }}
             </a>
             <!--<strong>{{ item.busca }}</strong><br>
