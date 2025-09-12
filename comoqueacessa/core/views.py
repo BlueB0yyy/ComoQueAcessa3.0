@@ -17,7 +17,7 @@ def home(request):
             print('Processando')
             query = f'Como acessar "{form.cleaned_data["query"]}"?'      #Query de busca do DuckDuckGo
             print(query)
-            results = search_duckduckgo(query)                          #Retorno dos resultados
+            results = search_duckduckgo(form.cleaned_data["query"])                          #Retorno dos resultados
             print('Busca feita!')
 
             raw_response = resposta_da_ia(query, results)               #Resposta da IA

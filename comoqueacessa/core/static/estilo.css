@@ -5,6 +5,17 @@ body {
     padding: 0;
 }
 
+.link {
+    text-decoration: none; /* remove sublinhado */
+    color: inherit;        /* herda a cor do pai, ou defina uma */
+    font-weight: bold;     /* opcional, pra dar destaque */
+}
+
+.link:hover {
+    color: #007BFF; /* corzinha no hover opcional */
+    text-decoration: underline; /* ou pode deixar sem */
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;

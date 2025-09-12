@@ -4,9 +4,13 @@
 <ul style="list-style: none; padding: 0;">
     {% for item in pesquisas %}
         <li style="margin-bottom: 12px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-            <strong>{{ item.busca }}</strong><br>
-            <em>Resposta:</em> {{ item.resposta|truncatechars:100 }}<br>
-            <small>Feito em {{ item.data|date:"d/m/Y H:i" }}</small>
+            {{ item.data|date:"d/m/Y H:i" }} –
+            <a href="{{ hist.link }}" target="_blank">
+                {{ item.busca }}
+            </a>
+            <!--<strong>{{ item.busca }}</strong><br>
+            <em>Resposta:</em> {{ item.resposta|truncatechars:100|safe }}<br>
+            <small>Feito em {{ item.data|date:"d/m/Y H:i" }}</small>-->
         </li>
     {% empty %}
         <li>Você ainda não fez nenhuma pesquisa.</li>

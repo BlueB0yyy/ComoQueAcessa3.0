@@ -7,13 +7,26 @@ def search_duckduckgo(query, num_results=6):
     Faz uma busca no DuckDuckGo e retorna uma lista com até 'num_results' resultados.
     Cada item contém 'title' e 'link'.
     """
+    keywords = query.lower().split()
     results = [] #lista de resultados
+    tentativas = 0
+
     with DDGS() as ddgs: 
-        for r in ddgs.text(query, region='pt-br', max_results=num_results): #Para cada elemento da pesquisa da query
-            results.append({ #cria uma lista gigante com 12 títulos e links
-                "title": r.get("title"),
-                "link": r.get("href")
-            })
+        while len(results) < num_results and tentativas < num_results:
+            resultados_puro = ddgs.text(query, region='pt-br', max_results=num_results)
+            for r in resultados_puro: #Para cada elemento da pesquisa da query
+                title = r.get("title").lower()
+                link = r.get("href").lower()
+
+                if any(kw in title or kw in link for kw in keywords):
+                    candidate = {"title": r.get("title"), "link": r.get("href")}
+                    if candidate not in results:  # evita duplicados
+                        results.append(candidate)
+
+                if len(results) >= num_results:
+                    break
+
+
     return results
 
 
