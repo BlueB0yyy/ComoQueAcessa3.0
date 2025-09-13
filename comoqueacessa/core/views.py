@@ -2,7 +2,7 @@
 from django.contrib.auth.decorators import login_required
 import markdown
 from django.utils.safestring import mark_safe
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import Form_de_busca
 from .utility import search_duckduckgo, resposta_da_ia
 from .models import Hist_busca
@@ -54,3 +54,7 @@ def guest(request):
 def historico_pesquisas(request):
     pesquisas = Hist_busca.objects.filter(user=request.user).order_by("-data")
     return render(request, "core/historico.html", {"pesquisas": pesquisas})
+
+def ver_pesquisa(request, pk):
+    pesquisa = get_object_or_404(Hist_busca, pk=pk, user=request.user)
+    return render(request, "core/ver_pesquisa.html", {"pesquisa": pesquisa})
