@@ -40,24 +40,25 @@ body {
     font-size: 14px;
 }
 
-.search-box {
-    background: #b0b0b0;
-    padding: 10px;
-    margin: 15px;
-    border-radius: 5px;
-}
-
-.search-box input {
-    width: 70%;
-    padding: 8px;
-}
-
 .search-box button {
     padding: 8px 15px;
     background: #2a47ff;
     color: white;
     border: none;
     border-radius: 5px;
+}
+
+#buscar{
+    background-color: rgb(37, 37, 232);
+    color:white;
+    padding-left: 50px;
+    padding-right:50px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
+    font-size:20px;
 }
 
 .results, .suggestions {
@@ -85,17 +86,19 @@ body {
 }
 
 label{
-    margin-left: 20px;
     margin-top: 10px;
     display: inline-block;
+    font-size: 25px;
 }
 
 input{
     display: inline-block;
+    width:80%;
+    height:25px;
+    font-size:25px;
 }
 
 button{
-    margin-left: 20px;
     margin-top: 5px;
     display: inline-block;
 }
@@ -115,6 +118,7 @@ button{
     background-color: #4CAF50;
     color: white;
     padding: 10px 16px;
+    margin-right:10px;
     font-size: 14px;
     border: none;
     border-radius: 6px;
@@ -126,7 +130,6 @@ button{
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 160px;
     box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
     border-radius: 6px;
     z-index: 1;
@@ -153,4 +156,15 @@ button{
 /* Efeito no botão quando aberto */
 .dropdown:hover .dropbtn {
     background-color: #45a049;
+}
+
+.login{
+    padding: 10px 16px;
+    text-decoration: none;
+    color: white;
+}
+
+#content{
+    padding-left:10px;
+    margin-bottom: 20px;
 }

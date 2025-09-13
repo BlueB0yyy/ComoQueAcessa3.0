@@ -22,13 +22,16 @@
                 </div>
             </div>
         {% else %}
-            <a href="{% url 'login' %}">Entrar com Google</a>
+            <a href="{% url 'login' %}" class="login">Entrar com Google</a>
         {% endif %}
     </nav>
 
+    <div id="content">
     {%block content%}
     {%endblock%}
-<script src="https://unpkg.com/htmx.org@1.9.10">
+    </div>
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+<script>
     // Mostra o loader quando a requisição começa
     document.body.addEventListener("htmx:beforeRequest", function(evt) {
       document.getElementById("loader").style.display = "block";
