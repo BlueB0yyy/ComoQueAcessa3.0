@@ -55,7 +55,7 @@ def resposta_da_ia(query, results):
 
     print(prompt)
     response = ollama.chat(
-        model="wizardlm2:latest",  # ou outro modelo que você tenha baixado
+        model="wizardlm2:latest", 
         messages=[
             {"role": "system", "content": "Você é um assistente que ajuda pessoas a acessar informações digitais de forma simples e didática."},
             {"role": "user", "content": prompt}

@@ -1,16 +1,8 @@
 from allauth.account.adapter import DefaultAccountAdapter
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
 
-class MyAccountAdapter(DefaultAccountAdapter):
-    # Se quiser customizar regras de login por e-mail normal
-    pass
-
 class MySocialAccountAdapter(DefaultSocialAccountAdapter):
     def pre_social_login(self, request, sociallogin):
-        """
-        Executa antes do login social.
-        Aqui você pode, por exemplo, forçar o vínculo pelo e-mail.
-        """
         # Se o usuário já estiver logado, não faz nada
         if request.user.is_authenticated:
             return

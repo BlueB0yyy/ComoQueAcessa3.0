@@ -65,15 +65,14 @@ LOGOUT_REDIRECT_URL = "/"  # para onde mandar depois do logout
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False #Não requer nome de usuário
+ACCOUNT_EMAIL_REQUIRED = True #Requer e-mail
+ACCOUNT_UNIQUE_EMAIL = True #E-mail como chave única
 
 SOCIALACCOUNT_AUTO_SIGNUP = True
 ACCOUNT_LOGOUT_ON_GET = True
 AUTH_USER_MODEL = "core.CustomUser"
 
-ACCOUNT_ADAPTER = "core.adapters.MyAccountAdapter"
 SOCIALACCOUNT_ADAPTER = "core.adapters.MySocialAccountAdapter"
 
 MIDDLEWARE = [

@@ -8,9 +8,6 @@
             <a href="{% url 'ver_pesquisa' item.pk %}" target="blank">
                 {{ item.busca }}
             </a>
-            <!--<strong>{{ item.busca }}</strong><br>
-            <em>Resposta:</em> {{ item.resposta|truncatechars:100|safe }}<br>
-            <small>Feito em {{ item.data|date:"d/m/Y H:i" }}</small>-->
         </li>
     {% empty %}
         <li>Você ainda não fez nenhuma pesquisa.</li>

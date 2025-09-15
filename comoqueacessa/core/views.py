@@ -47,9 +47,6 @@ def home(request):
         "results": results
     })
 
-def guest(request):
-    return render(request, "core/guest.html")  # pode criar um guest.html simples
-
 @login_required
 def historico_pesquisas(request):
     pesquisas = Hist_busca.objects.filter(user=request.user).order_by("-data")

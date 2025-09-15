@@ -28,7 +28,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []  # ⚠️ nada aqui, senão o Django vai pedir "username"
+    REQUIRED_FIELDS = []  
 
     objects = CustomUserManager()
 
