@@ -15,7 +15,7 @@ def home(request):
 
         if form.is_valid():                         #teste de validação do form
             print('Processando')
-            query = f'Como acessar "{form.cleaned_data["query"]}"?'      #Query de busca do DuckDuckGo
+            query = f'Como "{form.cleaned_data["query"]}"?'      #Query de busca do DuckDuckGo
             print(query)
             results = search_duckduckgo(form.cleaned_data["query"])                          #Retorno dos resultados
             print('Busca feita!')
@@ -38,6 +38,11 @@ def home(request):
                 "response": response,
                 "results": results
                 })
+            return render(request, "core/main.html", {
+                "form": form,
+                "response": response,
+                "results": results
+            })
     else:
         form = Form_de_busca()
 
